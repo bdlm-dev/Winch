@@ -27,7 +27,6 @@ public class ItemDataConverter : DredgeTypeConverter<ItemData>
         { "harvestParticleDepthOffset", new(-3f, o=> float.Parse(o.ToString())) },
         { "flattenParticleShape", new(false, o=> bool.Parse(o.ToString())) },
         { "availableInDemo", new(false, null) },
-        { "doReplaceOriginal", new(false, null)}
     };
 
     private readonly Dictionary<string, string> _reroutes = new()

@@ -34,7 +34,6 @@ internal static class PoiUtil
     public static List<CustomHarvestPoi> CustomHarvestPois = new();
     public static Dictionary<string, IHarvestable> Harvestables = new();
     public static Dictionary<string, GameObject> HarvestParticlePrefabs = new();
-    public static GameObject? DefaultHarvestParticlePrefab = null;
 
     public static void PopulateHarvestablesAndHarvestParticlePrefabs()
     {
@@ -71,13 +70,13 @@ internal static class PoiUtil
 
         foreach (var item in customHarvestPoi.items)
         {
-            if (ItemUtil.harvestableItemDataDict.TryGetValue(item, out var value))
+            if (ItemUtil.HarvestableItemDataDict.TryGetValue(item, out var value))
                 harvestPoiDataModel.items.Add((HarvestableItemData)value);
         }
 
         foreach (var item in customHarvestPoi.nightItems)
         {
-            if (ItemUtil.harvestableItemDataDict.TryGetValue(item, out var value))
+            if (ItemUtil.HarvestableItemDataDict.TryGetValue(item, out var value))
                 harvestPoiDataModel.nightItems.Add((HarvestableItemData)value);
         }
 
