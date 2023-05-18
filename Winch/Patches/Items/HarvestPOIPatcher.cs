@@ -15,6 +15,7 @@ public class HarvestValidatorPatcher
     {
         __instance.allHarvestPOIs.ForEach(POI =>
         {
+            // Could do as nested loop to handle both, but isn't really necessary for two things.
             for (int i = 0; i < POI.harvestPOIData.items.Count; i++)
             {
                 var currentItem = POI.harvestPOIData.items[i];
@@ -22,6 +23,15 @@ public class HarvestValidatorPatcher
                 {
                     WinchCore.Log.Info($"Replaced {currentItem.id}");
                     POI.harvestPOIData.items[i] = (HarvestableItemData) ItemUtil.itemsToReplace[currentItem.id];
+                }
+            }
+            for (int i = 0; i < POI.harvestPOIData.nightItems.Count; i++)
+            {
+                var currentItem = POI.harvestPOIData.nightItems[i];
+                if (ItemUtil.itemsToReplace.ContainsKey(currentItem.id))
+                {
+                    WinchCore.Log.Info($"Replaced {currentItem.id}");
+                    POI.harvestPOIData.nightItems[i] = (HarvestableItemData)ItemUtil.itemsToReplace[currentItem.id];
                 }
             }
         });
