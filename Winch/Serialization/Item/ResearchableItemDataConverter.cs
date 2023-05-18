@@ -6,6 +6,7 @@ public class ResearchableItemDataConverter : NonSpatialItemDataConverter
 {
     private readonly Dictionary<string, FieldDefinition> _definitions = new()
     {
+        { "showInCabin", new(true, null)},
         { "completedDescriptionKey", new( null, o=> CreateLocalizedString(ItemTableDefinition, o.ToString())) },
         { "daysToResearch", new( 1f, o => float.Parse(o.ToString())) },
         { "researchBenefitType", new(ResearchBenefitType.MOVEMENT_SPEED, o=> DredgeTypeHelpers.GetEnumValue<ResearchBenefitType>(o)) },
